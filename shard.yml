@@ -1,0 +1,14 @@
+name: thunderstore_client
+version: 1.0.0
+
+authors:
+  - Xavi Ablaza <xavi@hostari.com>
+
+crystal: 1.2.2
+
+development_dependencies:
+  webmock:
+    github: manastech/webmock.cr
+    branch: master
+
+license: MIT
