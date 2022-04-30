@@ -5,6 +5,10 @@ module Thunderstore
     def initialize(@community : String = "")
     end
 
+    def set_community(community : String)
+      @community = community
+    end
+
     # Returns the base url for which this client will make API requests to
     def base_url : URI
       return URI.parse("https://thunderstore.io") if community.empty?
