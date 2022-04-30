@@ -1,9 +1,5 @@
-require "json"
-require "http/client"
-
 module Thunderstore
   class Client
-    VERSION = "1.0.0"
     property community = ""
 
     def initialize(@community : String = "")
@@ -21,5 +17,3 @@ module Thunderstore
     end
   end
 end
-
-require "./**"
