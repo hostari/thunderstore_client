@@ -4,7 +4,7 @@ version: 1.0.2
 authors:
   - Xavi Ablaza <xavi@hostari.com>
 
-crystal: 1.2.2
+crystal: ~> 1.6.2
 
 development_dependencies:
   webmock:
