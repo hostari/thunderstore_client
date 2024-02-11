@@ -3,7 +3,7 @@
 The Thunderstore API Crystal wrapper. Fetch game modification info from your
 Crystal code.
 
-Copyright 2022 Hostari Philippines, Inc. See LICENSE for copying information.
+Copyright 2022-2024 Hostari Philippines, Inc. See LICENSE for copying information.
 
 📝 Implements: [REST API Reference (V1)](https://valheim.thunderstore.io/api/docs/)
 😘 Maintainer(s): @xaviablaza
