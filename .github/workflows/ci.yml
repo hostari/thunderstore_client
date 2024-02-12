@@ -15,5 +15,7 @@ jobs:
           crystal: 1.6.2
       - name: Download source
         uses: actions/checkout@v4
+      - name: Install dependencies
+        uses: shards install
       - name: Run tests
         run: crystal spec
