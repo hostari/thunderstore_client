@@ -16,6 +16,6 @@ jobs:
       - name: Download source
         uses: actions/checkout@v4
       - name: Install dependencies
-        uses: shards install
+        run: shards install
       - name: Run tests
         run: crystal spec
