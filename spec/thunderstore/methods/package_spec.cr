@@ -4,7 +4,7 @@ describe Thunderstore::Package do
   context "valheim" do
     describe ".list_packages" do
       it "retrieves all packages" do
-        WebMock.stub(:get, "https://valheim.thunderstore.io/api/v1/package/")
+        WebMock.stub(:get, "https://thunderstore.io/api/v1/package/")
           .to_return(status: 200, body: File.read("spec/support/All_Packages-1650682645115.json"), headers: {"Content-Type" => "application/json"})
 
         client = Thunderstore::Client.new("valheim")
