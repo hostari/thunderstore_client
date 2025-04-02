@@ -1,20 +1,37 @@
-name: Crystal CI
+name: thunderstore_client CI
 on:
+  push:
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 jobs:
-  build:
+  check-format:
     runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:1.14.0
     steps:
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-      - uses: crystal-lang/install-crystal@v1
-        with:
-          crystal: 1.6.2
-      - name: Download source
-        uses: actions/checkout@v4
-      - name: Install dependencies
-        run: shards install
-      - name: Run tests
-        run: crystal spec
+      - uses: actions/checkout@v4
+      - name: Format
+        run: crystal tool format --check
+  specs:
+    runs-on: ubuntu-latest
+    container:
+      image: crystallang/crystal:1.14.0
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Crystal cache
+      uses: actions/cache@v4
+      id: crystal-cache
+      with:
+        path: |
+          ~/.cache/crystal
+          lib
+          lucky_tasks
+        key: ${{ runner.os }}-crystal-${{ hashFiles('**/shard.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-crystal-
+    - name: Install shards
+      if: steps.crystal-cache.outputs.cache-hit != 'true'
+      run: shards check || shards install --ignore-crystal-version
+    - name: Run tests
+      run: crystal spec
